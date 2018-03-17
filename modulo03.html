@@ -1,0 +1,36 @@
+<!DOCTYPE html><html>
+    <head>
+      <title>Date</title>
+      <meta charset="UTF-8">
+    </head>
+    <body>
+      <h1 id="h1"></h1>
+      <div>Jorge Hernández Latorre</div>
+      <h2 id="h2">La fecha y la hora son:</h2>
+      <div id="fecha"></div>
+      <div id="resultados"></div>
+    
+     <script type="text/javascript">
+      var fecha = new Date();
+      var msj;
+    
+      if      (fecha.getHours() < 7)  { msj = "Buenas noches";}
+      else if (fecha.getHours() < 12) { msj = "Buenos días";}
+      else if (fecha.getHours() < 21) { msj = "Buenas tardes";}
+      else                                          { msj = "Buenas noches";}
+    
+      document.getElementById("h1").innerHTML    = msj;
+      document.getElementById("fecha").innerHTML = fecha;
+      document.getElementById("resultados").innerHTML = "Resultados al ejercicio : " + "<br>" +
+      "a) Contenido de innerHTML de elemento identificado por id = &quot;h2&quot; es: " + 
+      document.getElementById("h2").innerHTML + "<br>" +
+      "b) Contenido de outerHTML de elemento identificado por id = &quot;h1&quot; es: " + 
+      document.getElementById("h1").innerHTML + "<br>" +
+      "c) Contenido de de la propiedad global: location.href = " + location.href + "<br>" + 
+      "d) Contenido de de la propiedad global: location      = " + location + "<br>" + 
+      "e) Contenido de de las propiedades globales: <br>" + 
+      "   screen.width = " + screen.width + "<br>" + 
+      "   y screen.heigth = " + screen.height;
+    </script>
+    </body>
+    </html>
