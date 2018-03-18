@@ -8,43 +8,63 @@
     <script type="text/javascript">
     var num, acc = 0, op = ""
         function inicio() {
-            num = document.getElementById("num");
+            num = document.getElementById("n1");
         }
         function vaciar() {
-            document.getElementById("n1").value = "";
+            num.value = "";
         }
-        function cuadrado() {
-            var num = document.getElementById("n1");
-            num.value = num.value * num.value;
+        function cuadrado(x) {
+            num.value = x * x;
         }
-        function inverso() {
-            var num = document.getElementById("n1");
-            num.value = 1 / num.value;
+        function inverso(x) {
+            num.value = 1 / x;
         }
-        function raiz_sqr() {
-            var num = document.getElementById("n1");
-            num.value = Math.sqrt(num.value);
+        function raiz_sqr(x) {
+            num.value = Math.sqrt(x);
         }
-        function parte_entera() {
-            var num = document.getElementById("n1");
-            if(num.value > 0) num.value = Math.floor(num.value) ;
-            if(num.value < 0) num.value = -Math.ceil(num.value);
+        function parte_entera(x) {
+            if(x > 0) num.value = Math.floor(x) ;
+            if(x < 0) num.value = -Math.ceil(x);
+        }
+        function mas() {
+            acc = num.value; op = "+";
+        }
+        function menos() {
+            acc = num.value; op = "-";
+        }
+        function multiplicacion() {
+            acc = num.value; op = "*";
+        }
+        function division() {
+            acc = num.value; op = "/";
+        }
+        function x_elevado_a_y() {
+            acc = num.value; op = "x_elevado_a_y";
+        }
+        function calcular() {
+            if (op == "+") { num.value = +acc + +num.value; op = "";};
+            if (op == "-") { num.value = +acc - +num.value; op = "";};
+            if (op == "*") { num.value = +acc * +num.value; op = "";};
+            if (op == "/") { num.value = +acc / +num.value; op = "";};
+            if (op == "x_elevado_a_y") { num.value = Math.pow(+acc, +num.value); op = "";};
         }
     </script>
 </head>
-<body>
-    <p>Práctica Módulo 4 - Mooc Html, Css y Javascript</p>
+<body onload="inicio()">
+    <h1>Práctica Módulo 4 - Mooc Html, Css y Javascript</h1>
+    <h2>Jorge Hernández Latorre</h2>
     <input type="text" id="n1" onclick="vaciar()">
     <p>Operaciones unitarias:</p>
-    <button onclick="cuadrado()">x<sup>2</sup></button>
-    <button onclick="inverso()">1/x</button>
-    <button onclick="raiz_sqr()">srq(x)</button>
-    <button onclick="parte_entera()">Módulo(x)</button>
+    <button onclick="cuadrado(num.value)">x<sup>2</sup></button>
+    <button onclick="inverso(num.value)">1/x</button>
+    <button onclick="raiz_sqr(num.value)">srq(x)</button>
+    <button onclick="parte_entera(num.value)">Módulo(x)</button>
     <p>Operaciones binarias:</p>
     <button onclick="mas()">+</button>
     <button onclick="menos()">-</button>
-    <button onclick="">+</button>
-    <button onclick="">-</button>
-    <button onclick="">=</button>
+    <button onclick="multiplicacion()">*</button>
+    <button onclick="division()">/</button>
+    <button onclick="x_elevado_a_y()">x<sup>y</sup></button>
+    <button onclick="calcular()">=</button>
 </body>
 </html>
