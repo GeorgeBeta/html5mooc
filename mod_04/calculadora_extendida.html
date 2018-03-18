@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora extendida - Modulo 4</title>
+    <script type="text/javascript">
+        var num, acc = 0, op = ""
+        function inicio() {
+            num = document.getElementById("num");
+        }
+        function vaciar() {
+            num.value = "";
+        }
+        function mas() {
+            acc = num.value; op = "+";
+        }
+        function menos() {
+            acc = num.value; op = "-";
+        }
+        function igual() {
+            if (op == "+") { num.value = +acc + +num.value; op = ""}
+            if (op == "-") { num.value = +acc - +num.value; op = ""}
+        }
+    </script>
+</head>
+<body onload="inicio()">
+    <p>Número:</p>
+    <input type="text" size = "16" id="num" onclick="vaciar()">
+    <p></p>
+    <button onclick="mas()">+</button>
+    <button onclick="menos()">-</button>
+    <button onclick="igual()">=</button>
+</body>
+</html>

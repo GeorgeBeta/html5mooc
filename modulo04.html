@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora Modulo 4</title>
+    <script type="text/javascript">
+    var num, acc = 0, op = ""
+        function inicio() {
+            num = document.getElementById("num");
+        }
+        function vaciar() {
+            document.getElementById("n1").value = "";
+        }
+        function cuadrado() {
+            var num = document.getElementById("n1");
+            num.value = num.value * num.value;
+        }
+        function inverso() {
+            var num = document.getElementById("n1");
+            num.value = 1 / num.value;
+        }
+        function raiz_sqr() {
+            var num = document.getElementById("n1");
+            num.value = Math.sqrt(num.value);
+        }
+        function parte_entera() {
+            var num = document.getElementById("n1");
+            if(num.value > 0) num.value = Math.floor(num.value) ;
+            if(num.value < 0) num.value = -Math.ceil(num.value);
+        }
+    </script>
+</head>
+<body>
+    <p>Práctica Módulo 4 - Mooc Html, Css y Javascript</p>
+    <input type="text" id="n1" onclick="vaciar()">
+    <p>Operaciones unitarias:</p>
+    <button onclick="cuadrado()">x<sup>2</sup></button>
+    <button onclick="inverso()">1/x</button>
+    <button onclick="raiz_sqr()">srq(x)</button>
+    <button onclick="parte_entera()">Módulo(x)</button>
+    <p>Operaciones binarias:</p>
+    <button onclick="mas()">+</button>
+    <button onclick="menos()">-</button>
+    <button onclick="">+</button>
+    <button onclick="">-</button>
+    <button onclick="">=</button>
+</body>
+</html>
