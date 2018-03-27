@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        function inicio() {
+            num = document.getElementById("n1");
+        }
+        function vaciar() {
+            num.value = "";
+        }
+        function sumatorio() {
+            var a = num.value.split(",")
+            for(var i=0, acc=0; i<a.length; i++)
+                acc = acc + (+a[i]);
+            num.value = acc;
+        }
+    </script>
+</head>
+<body onload="inicio()">
+    <h1>Calculadora con sumatorio</h1>
+    <input type="text" id="n1" onclick="vaciar()">
+    <p></p>
+    <button onclick="sumatorio()">&Sigma; n</button>
+</body>
+</html>

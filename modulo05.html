@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora Modulo 5</title>
+    <script type="text/javascript">
+    var num, acc = 0, op = ""
+        function inicio() {
+            num = document.getElementById("n1");
+        }
+        function vaciar() {
+            num.value = "";
+        }
+        function cuadrado(x) {
+            num.value = x * x;
+        }
+        function inverso(x) {
+            num.value = 1 / x;
+        }
+        function raiz_sqr(x) {
+            num.value = Math.sqrt(x);
+        }
+        function parte_entera(x) {
+            if(x > 0) num.value = Math.floor(x) ;
+            if(x < 0) num.value = -Math.ceil(x);
+        }
+        function dos_elevado(x) {
+            num.value = 1;
+            while(x > 0)    {
+                num.value *= 2;
+                x--;
+            }
+        }
+        function factorial(x)   {
+            num.value = 1;
+            while(x > 0)    {
+                num.value *= x--;
+            }
+        }
+        function mas() {
+            acc = num.value; op = "+";
+        }
+        function menos() {
+            acc = num.value; op = "-";
+        }
+        function multiplicacion() {
+            acc = num.value; op = "*";
+        }
+        function division() {
+            acc = num.value; op = "/";
+        }
+        function x_elevado_a_y() {
+            acc = num.value; op = "x_elevado_a_y";
+        }
+        function calcular() {
+            if (op == "+") { num.value = +acc + +num.value; op = "";};
+            if (op == "-") { num.value = +acc - +num.value; op = "";};
+            if (op == "*") { num.value = +acc * +num.value; op = "";};
+            if (op == "/") { num.value = +acc / +num.value; op = "";};
+            if (op == "x_elevado_a_y") { num.value = Math.pow(+acc, +num.value); op = "";};
+        }
+        function sumatorio()    {
+            var a = num.value.split(",")
+            for(var i=0, acc=0; i<a.length; i++)
+                acc = acc + (+a[i]);
+            num.value = acc;
+        }
+        function producto() {
+            var a = num.value.split(",")
+            for(var i=0, acc=1; i<a.length; i++)
+                acc = acc * (+a[i]);
+            num.value = acc;          
+        }
+    </script>
+</head>
+<body onload="inicio()">
+    <h1>Práctica Módulo 5 - Mooc Html, Css y Javascript</h1>
+    <h2>Jorge Hernández Latorre</h2>
+    <input type="text" id="n1" onclick="vaciar()">
+    <p>Operaciones unitarias:</p>
+    <button onclick="cuadrado(num.value)">x<sup>2</sup></button>
+    <button onclick="inverso(num.value)">1/x</button>
+    <button onclick="raiz_sqr(num.value)">srq(x)</button>
+    <button onclick="parte_entera(num.value)">Módulo(x)</button>
+    <button onclick="dos_elevado(num.value)">2^n</button>
+    <button onclick="factorial(num.value)">n!</button>
+    <p>Operaciones binarias:</p>
+    <button onclick="mas()">+</button>
+    <button onclick="menos()">-</button>
+    <button onclick="multiplicacion()">*</button>
+    <button onclick="division()">/</button>
+    <button onclick="x_elevado_a_y()">x<sup>y</sup></button>
+    <button onclick="calcular()">=</button>
+    <p>Operaciones con n operandos (separados por comas):</p>
+    <button onclick="sumatorio()">&Sigma; n</button>
+    <button onclick="producto()">producto n</button>
+</body>
+</html>
