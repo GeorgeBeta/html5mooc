@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora Modulo 5</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(function () {
+            var acc = 0, op = "";
+            $("#n1").on("click", function () {
+                $(this).val("");
+            });
+            $("#btn_cuadrado").on("click", function() {
+				var num = $("#n1");
+				num.val(num.val() * num.val());
+			});
+            $("#btn_inverso").on("click", function() {
+				var num = $("#n1");
+                num.val(1/num.val());
+            });
+            $("#btn_raiz_sqr").on("click", function() {
+				var num = $("#n1");
+				num.val(Math.sqrt(num.val()));
+			});
+            $("#btn_parte_entera").on("click", function() {
+				var num = $("#n1");
+                if (num.val() >= 0) num.val(Math.floor(num.val()));
+                if (num.val() < 0) num.val(-Math.ceil(num.val()));
+			});
+			$("#btn_dos_elevado").on("click", function() {
+				var num = $("#n1");
+                var n = num.val();
+                num.val(1);
+                while(n > 0) {
+                    num.val(2*num.val());
+                    n--;
+                }
+			});
+			$("#btn_factorial").on("click", function() {
+				var num = $("#n1");
+				var n = num.val();
+				num.val(1);
+				while (n > 0) {
+					num.val(num.val() * n--);
+				}
+			});
+            $("#btn_suma").on("click", function() {
+				num = $("#n1");
+				acc = num.val(); op = "+";
+			});
+            $("#btn_resta").on("click", function() {
+				num = $("#n1");
+				acc = num.val(); op = "-";
+			});
+            $("#btn_multiplicacion").on("click", function() {
+				num = $("#n1");
+				acc = num.val(); op = "*";
+			});
+            $("#btn_division").on("click", function() {
+				num = $("#n1");
+				acc = num.val(); op = "/";
+			});
+            $("#btn_x_elevado_a_y").on("click", function() {
+				num = $("#n1");
+				acc = num.val(); op = "x_elevado_a_y";
+			});
+            $("#btn_calcular").on("click", function() {
+				num = $("#n1");
+                if (op == "+") { num.val(+acc + +num.val()); op = ""; };
+                if (op == "-") { num.val(+acc - +num.val()); op = ""; };
+                if (op == "*") { num.val(+acc * +num.val()); op = ""; };
+                if (op == "/") { num.val(+acc / +num.val()); op = ""; };
+                if (op == "x_elevado_a_y") { num.val(Math.pow(+acc, +num.val())); op = ""; };
+			});
+            $("#btn_sumatorio").on("click", function() {
+				num = $("#n1");
+				var a = num.val().split(",");
+                for (var i = 0, acc = 0; i < a.length; i++)
+                    acc = acc + (+a[i]);
+                num.val(acc);
+			});
+            $("#btn_producto").on("click", function() {
+				num = $("#n1");
+				var a = num.val().split(",");
+                for (var i = 0, acc = 1; i < a.length; i++)
+                    acc = acc * (+a[i]);
+                num.val(acc);
+			});
+        });
+    </script>
+</head>
+
+<body onload="inicio()">
+    <h1>Práctica Módulo 5 - Mooc Html, Css y Javascript</h1>
+    <h2>Jorge Hernández Latorre</h2>
+    <input type="text" id="n1">
+    <p>Operaciones unitarias:</p>
+    <button id="btn_cuadrado">x<sup>2</sup></button>
+    <button id="btn_inverso">1/x</button>
+    <button id="btn_raiz_sqr">srq(x)</button>
+    <button id="btn_parte_entera">Módulo(x)</button>
+    <button id="btn_dos_elevado">2^n</button>
+    <button id="btn_factorial">n!</button>
+    <p>Operaciones binarias:</p>
+    <button id="btn_suma">+</button>
+    <button id="btn_resta">-</button>
+    <button id="btn_multiplicacion">*</button>
+    <button id="btn_division">/</button>
+    <button id="btn_x_elevado_a_y">x<sup>y</sup></button>
+    <button id="btn_calcular">=</button>
+    <p>Operaciones con n operandos (separados por comas):</p>
+    <button id="btn_sumatorio">&Sigma; n</button>
+    <button id="btn_producto">producto n</button>
+</body>
+
+</html>

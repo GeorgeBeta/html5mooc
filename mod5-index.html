@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio P2P obligatorio - Módulo 4 (Miríadax)</title>
+	<meta charset="utf-8" />
+	<script src="jquery-2.1.4.min.js"></script>
+	<script>
+		$(function() {
+			// Vacía la caja con id 'n1' (donde se introduce el número o números)
+			$("#n1").on("click", function() {
+				$(this).val("");
+			});
+			// ****-- Operaciones unitarias --****
+			
+			// Vincula el botón 'b1' con la función de elevar al cuadrado
+			$("#b1").on("click", function() {
+				var num = $("#n1");
+				num.val(num.val() * num.val());
+			});
+			// Vincula el botón 'b2' con la función inverso
+			$("#b2").on("click", function() {
+				var num = $("#n1");
+				num.val(1 / num.val());
+			});
+			// Vincula el botón 'b3' con la función raíz cuadrada
+			$("#b3").on("click", function() {
+				var num = $("#n1");
+				num.val(Math.sqrt(num.val()));
+			});
+			// Vincula el botón 'b4' con la función parte entera
+			$("#b4").on("click", function() {
+				var num = $("#n1");
+				num.val((num.val() >= 0) ? Math.floor(num.val()) : Math.ceil(num.val()));
+			});
+			// Vincula el botón 'b5' con la función potencia n en base 2
+			$("#b5").on("click", function() {
+				var num = $("#n1");
+				num.val(Math.pow(2, num.val()));
+			});
+			// Vincula el botón 'b6' con la función factorial
+			$("#b6").on("click", function() {
+				var num = $("#n1");
+				var n = +num.val();
+				var res = 1;
+				while (n !== 0) {
+					res = res * n;
+					n = n - 1;
+				}
+				num.val(res);
+			});
+			// ****-- Operaciones binarias --****
+			var num, num1, num2 = 0;
+			var op = "";
+			// Vincula el botón 'suma' con la función sumar
+			$("#suma").on("click", function() {
+				num = $("#n1");
+				num1 = +num.val();
+				op = "+";
+			});
+			// Vincula el botón 'resta' con la función restar
+			$("#resta").on("click", function() {
+				num = $("#n1");
+				num1 = +num.val();
+				op = "-";
+			});
+			// Vincula el botón 'multi' con la función multiplicar
+			$("#multi").on("click", function() {
+				num = $("#n1");
+				num1 = +num.val();
+				op = "*";
+			});
+			// Vincula el botón 'div' con la función dividir
+			$("#div").on("click", function() {
+				num = $("#n1");
+				num1 = +num.val();
+				op = "/";
+			});
+			// Vincula el botón 'pot_y' con la función de elevar x a y
+			$("#pot_y").on("click", function() {
+				num = $("#n1");
+				num1 = +num.val();
+				op = "pot_y";
+			})
+			// Vincula el botón 'calcular' con el = para mostrar el resultado de la operación binaria elegida
+			$("#calcular").on("click", function() {
+				num2 = +num.val();
+				if (op === "+") {
+					num.val(num1 + num2);
+				}
+				if (op === "-") {
+					num.val(num1 - num2);
+				}
+				if (op === "*") {
+					num.val(num1 * num2);
+				}
+				if (op === "/") {
+					num.val(num1 / num2);
+				}
+				if (op === "pot_y") {
+					num.val(Math.pow(num1, num2));
+				}
+			});
+			// ****-- Operaciones con n operandos --**** 
+			// Vincula el botón 'sumat' a la función sumatorio(n)
+			$("#sumat").on("click", function() {
+				var num = $("#n1");
+				var lista = num.val().split(",");
+				var i = 0, acc = 0;
+				while (i < lista.length) {
+					acc = acc + (+lista[i]);
+					i++;
+				}
+				num.val(acc);
+			});
+			// Vincula el botón 'product' a la función productorio(n)
+			$("#product").on("click", function() {
+				var num = $("#n1");
+				var lista = num.val().split(",");
+				var i = 0, acc = 1;
+				while (i < lista.length) {
+					acc = acc * (+lista[i]);
+					i++;
+				}
+				num.val(acc);
+			});
+		});
+	</script>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+		html {
+			background: #aaa;
+		}
+		body {
+			width: 80%;
+			margin: 1% auto;
+		}
+		h1, h2, p, button {
+			margin: 0.5% 0.25%;
+			padding: 1%;
+		}
+		button, input {
+			margin: 0.5% 1%;
+			padding: 1%;
+			border: 0.5px #000 solid;
+			border-radius: 7.5%/7.5%;
+			box-shadow: 5px 5px 10px rgba(0, 15, 15, 0.5);
+		}
+	</style>
+</head>
+<body onload="iniciar()">
+	<h1>Buenos días, bienvenid@ a la calculadora de David A. Pérez</h1>
+	<p>Número: <input type="text" id="n1" /> <button id="calcular">=</button></p>
+	<h2>Operaciones unitarias</h2>
+	<p>
+		<button id="b1">x<sup>2</sup></button>
+		<button id="b2">1/x</button>
+		<button id="b3">sqrt(x)</button>
+		<button id="b4">parte_entera(x)</button>
+		<button id="b5">2<sup>n</sup></button>
+		<button id="b6">n!</button>
+	</p>
+	<h2>Operaciones binarias</h2>
+	<p>
+		<button id="suma">+</button>
+		<button id="resta">-</button>
+		<button id="multi">*</button>
+		<button id="div">/</button>
+		<button id="pot_y">x<sup>y</sup></button>
+	</p>
+	<h2>Operaciones con n operandos en formato CSV</h2>
+	<p>
+		<button id="sumat">Σ(n)</button>
+		<button id="product">Π(n)</button>
+	</p>
+</body>
+</html>

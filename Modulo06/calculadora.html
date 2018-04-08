@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+* { user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    margin:0;
+    padding:0;
+}
+
+#sortable { 
+  list-style-type: none;
+   margin-left:auto;
+   margin-right:auto;
+}
+
+#sortable li { 
+  float: left; 
+  width: 33%; 
+}
+
+#sortable li img {
+  vertical-align:bottom;
+  width: 100%; 
+  height: auto;
+}
+
+.ejercicio {
+  width: 100%;
+}
+
+@media (orientation:landscape){ #sortable {width:100vh;}}
+@media (orientation:portrait) { #sortable {width:100%;}}
+</style>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui.touch-punch.min.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<script>
+  $(function () {
+    var acc = 0, op = "";
+    $("#n1").on("click", function () {
+      $(this).val("");
+    });
+    $("#btn_cuadrado").on("click", function () {
+      var num = $("#n1");
+      num.val(num.val() * num.val());
+    });
+    $("#btn_inverso").on("click", function () {
+      var num = $("#n1");
+      num.val(1 / num.val());
+    });
+    $("#btn_raiz_sqr").on("click", function () {
+      var num = $("#n1");
+      num.val(Math.sqrt(num.val()));
+    });
+    $("#btn_parte_entera").on("click", function () {
+      var num = $("#n1");
+      if (num.val() >= 0) num.val(Math.floor(num.val()));
+      if (num.val() < 0) num.val(-Math.ceil(num.val()));
+    });
+    $("#btn_dos_elevado").on("click", function () {
+      var num = $("#n1");
+      var n = num.val();
+      num.val(1);
+      while (n > 0) {
+        num.val(2 * num.val());
+        n--;
+      }
+    });
+    $("#btn_factorial").on("click", function () {
+      var num = $("#n1");
+      var n = num.val();
+      num.val(1);
+      while (n > 0) {
+        num.val(num.val() * n--);
+      }
+    });
+    $("#btn_suma").on("click", function () {
+      num = $("#n1");
+      acc = num.val(); op = "+";
+    });
+    $("#btn_resta").on("click", function () {
+      num = $("#n1");
+      acc = num.val(); op = "-";
+    });
+    $("#btn_multiplicacion").on("click", function () {
+      num = $("#n1");
+      acc = num.val(); op = "*";
+    });
+    $("#btn_division").on("click", function () {
+      num = $("#n1");
+      acc = num.val(); op = "/";
+    });
+    $("#btn_x_elevado_a_y").on("click", function () {
+      num = $("#n1");
+      acc = num.val(); op = "x_elevado_a_y";
+    });
+    $("#btn_calcular").on("click", function () {
+      num = $("#n1");
+      if (op == "+") { num.val(+acc + +num.val()); op = ""; };
+      if (op == "-") { num.val(+acc - +num.val()); op = ""; };
+      if (op == "*") { num.val(+acc * +num.val()); op = ""; };
+      if (op == "/") { num.val(+acc / +num.val()); op = ""; };
+      if (op == "x_elevado_a_y") { num.val(Math.pow(+acc, +num.val())); op = ""; };
+    });
+    $("#btn_sumatorio").on("click", function () {
+      num = $("#n1");
+      var a = num.val().split(",");
+      for (var i = 0, acc = 0; i < a.length; i++)
+        acc = acc + (+a[i]);
+      num.val(acc);
+    });
+    $("#btn_producto").on("click", function () {
+      num = $("#n1");
+      var a = num.val().split(",");
+      for (var i = 0, acc = 1; i < a.length; i++)
+        acc = acc * (+a[i]);
+      num.val(acc);
+    });
+  });
+</script>
+</head>
+<body>
+
+<div class="container">
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#miMenu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="index.html">MOOC</a>
+    </div>
+    <div class="collapse navbar-collapse" id="miMenu">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="puzzle.html">PUZZLE</a></li>
+        <li class="active"><a href="calculadora.html">Calculadora</a></li> 
+        <li><a href="#">Opción 4</a></li> 
+        <li><a href="#">Opción 5</a></li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="ejercicio">
+    <input type="text" id="n1">
+    <p>Operaciones unitarias:</p>
+    <button id="btn_cuadrado">x<sup>2</sup></button>
+    <button id="btn_inverso">1/x</button>
+    <button id="btn_raiz_sqr">srq(x)</button>
+    <button id="btn_parte_entera">Módulo(x)</button>
+    <button id="btn_dos_elevado">2^n</button>
+    <button id="btn_factorial">n!</button>
+    <p>Operaciones binarias:</p>
+    <button id="btn_suma">+</button>
+    <button id="btn_resta">-</button>
+    <button id="btn_multiplicacion">*</button>
+    <button id="btn_division">/</button>
+    <button id="btn_x_elevado_a_y">x<sup>y</sup></button>
+    <button id="btn_calcular">=</button>
+    <p>Operaciones con n operandos (separados por comas):</p>
+    <button id="btn_sumatorio">&Sigma; n</button>
+    <button id="btn_producto">producto n</button>
+  <!-- <div class="clear"> </div> -->
+</div>
+<div class="panel-footer">Jorge Hernández Latorre</div>
+</div>
+
+</body>
+</html>
+
