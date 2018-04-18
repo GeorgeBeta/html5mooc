@@ -5,7 +5,7 @@ var galeria = [
    },
    { persona:"Khalil Gibran - جبران خليل جبران بن ميخائل بن سعد",
      frase:"El silencio del envidioso está lleno de ruidos.",
-     foto:"http://www.hannaharendtcenter.org/wp-content/uploads/2015/05/111.jpg"
+     foto:"https://akifrases.com/imagenes/jalil-gibran.jpg"
    },
    { persona:"Confucio - 孔子",
      frase: "Todo tiene belleza pero no todo el mundo la puede ver.",

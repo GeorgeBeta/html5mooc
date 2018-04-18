@@ -87,12 +87,28 @@ nav a:hover {
 	text-align: right;
 	height:28px;
 	cursor:pointer;
+	float: right;
 }
 .editar img {
 	padding: 6px;
 	border-radius:50%;
 }
 .editar:hover > img {
+	background-color: #000000;
+}
+.reemplazargaleria {
+	background-color: #626262;
+	padding: 0.2em;
+	text-align: left;
+	height:28px;
+	cursor:pointer;
+	float: left;
+}
+.reemplazargaleria img {
+	padding: 6px;
+	border-radius:50%;
+}
+.reemplazargaleria:hover > img {
 	background-color: #000000;
 }
 .contenido #datos div#botones {

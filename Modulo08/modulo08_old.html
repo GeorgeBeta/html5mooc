@@ -9,8 +9,8 @@
 
 <script>
 var t, actual;
-// localStorage.str1=localStorage.str1 || '[]';
-// var galeriaLocal = JSON.parse(localStorage.str1); 
+localStorage.str1=localStorage.str1 || '[]';
+var galeriaLocal = JSON.parse(localStorage.str1); 
 
 function select(i){
    actual = i;
@@ -39,8 +39,8 @@ function generar_selector(){ // regenera la botonera
 
 $(function (){
   generar_selector();
-  localStorage.citas = localStorage.citas || '[]';
-  galeriaLocal = JSON.parse(localStorage.citas); 
+  // localStorage.str1=(localStorage.str1 || '[]');
+  // galeriaLocal = JSON.parse(localStorage.str1); 
   if (galeriaLocal.length > 0) {
     galeria = galeriaLocal;
   }
@@ -65,7 +65,7 @@ $(function (){
        frase:$("#frase_d").html(),
        foto:$("#foto_d").html()
     }) - 1;
-    localStorage.citas=JSON.stringify(galeria);
+    
     generar_selector();
 
     select(actual);
@@ -76,7 +76,7 @@ $(function (){
         galeria[actual].persona = $("#persona_d").html();
         galeria[actual].frase = $("#frase_d").html();
         galeria[actual].foto = $("#foto_d").html();
-        localStorage.citas=JSON.stringify(galeria);;
+        // localStorage.str1=JSON.stringify(galeria);
         generar_selector();
         select(actual);
         $("#datos").css("display", "none");
@@ -85,23 +85,11 @@ $(function (){
   $("#borrar").on("click", function () {
         $("#datos").css("display", "none");
         galeria.splice(actual, 1);
-        localStorage.citas=JSON.stringify(galeria);
+        // localStorage.str1=JSON.stringify(galeria);
         generar_selector();
         select(0);
   })
 
-  $("#reset").on("click", function(){
-	 $("#datos").css("display", "none");
-        var respuesta = confirm("¿Recargar las citas originales para su próxima visita?")
-        if (respuesta===true) 
-        {
-           localStorage.removeItem("citas");
-           //recargar_galeria();
-           generar_selector();
-		       select(0);
-           alert("En su próxima visita verá las citas originales.");
-        }
-})
   // select(0);
 });
 </script>
@@ -119,10 +107,6 @@ $(function (){
       <p id="persona"></p>
     </div>
   </section>
-  <div class="reemplazargaleria" id="reset">
-      <!-- <img src="images/icons8-reemplazar-50.png" height="20px;" alt=""/> -->
-      <img src="images/Arrow-complex-left.svg" height="20px;" alt=""/>
-  </div>
   <div class="editar" id="editar"> 
     <img src="images/carat-d-white.svg" alt=""/>
   </div>
